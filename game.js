@@ -7,7 +7,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 function playGame(e) {
-  console.log(e.target.innerText)
+  let playerSelection = e.target.innerText
   let computerSelection = Math.random();
   if (computerSelection < 0.34) {
     computerSelection = "Pikachu";
@@ -16,5 +16,34 @@ function playGame(e) {
   } else {
     computerSelection = "Charmander";
   }
-  console.log(computerSelection);
+  console.log(playerSelection, computerSelection);
+  let result = checkWinner(playerSelection, computerSelection);
+  console.log(result);
+}
+
+function checkWinner(pl, co) {
+  if (pl === co) {
+    return "Draw";
+  }
+  if (pl === "Pikachu") {
+    if (co === "Squirtle") {
+      return "Computer";
+    } else {
+      return "Player";
+    }
+  }
+  if (pl === "Squirtle") {
+    if (co === "Charmander") {
+      return "Computer";
+    } else {
+      return "Player";
+    }
+  }
+  if (pl === "Charmander") {
+    if (co === "Pikachu") {
+      return "Computer";
+    } else {
+      return "Player";
+    }
+  }
 }
